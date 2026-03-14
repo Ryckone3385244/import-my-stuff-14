@@ -2576,14 +2576,28 @@ const Admin = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
 
   if (!isAdmin) {
-    return null;
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Admin Login Required</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              Please sign in with an admin account to access this page.
+            </p>
+            <Button className="w-full" onClick={() => navigate("/login?redirect=/admin")}>Go to Login</Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   const handleDeleteConfirm = () => {
