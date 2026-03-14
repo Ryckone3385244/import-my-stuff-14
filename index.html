@@ -3,24 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>Event name</title>
+    <meta name="description" content="Event name - SEO description">
+    <meta name="keywords" content="Customer Connect Expo, CX strategy, customer experience, trade show, exhibition, networking event, industry conference, Georgia World Congress Center, 2026">
+    <meta name="author" content="Customer Connect Expo" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.customerconnectexpo.com" />
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://www.customerconnectexpo.com" />
+    
+    
+    <meta property="og:image" content="https://www.customerconnectexpo.com/og-image.png">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Customer Connect Expo - Transform Your CX Strategy" />
+    <meta property="og:site_name" content="Customer Connect Expo" />
+    <meta property="og:locale" content="en_US" />
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <meta name="twitter:url" content="https://www.customerconnectexpo.com" />
+    
+    
+    <meta name="twitter:image" content="https://www.customerconnectexpo.com/og-image.png">
+    <meta name="twitter:image:alt" content="Customer Connect Expo - Transform Your CX Strategy" />
+    
+    <!-- Additional SEO meta tags -->
+    <meta name="theme-color" content="#1a1a2e" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- LCP Hero Image Preload -->
+    <link rel="preload" as="image" href="/src/assets/hero-expo.jpg" fetchpriority="high" />
+    
+    <!-- Tracking codes are managed via Admin > Global HTML & Scripts -->
+    
+    <!-- Global HTML Snippets: Before Head End -->
+    <!-- Additional tracking codes below are managed via Admin > Global HTML & Scripts -->
+    <script id="global-before-head-end"></script>
+    <meta property="og:title" content="Event name">
+  <meta name="twitter:title" content="Event name">
+  <meta property="og:description" content="Event name - SEO description">
+  <meta name="twitter:description" content="Event name - SEO description">
+</head>
 
   <body>
+    <!-- Tracking noscript fallbacks are managed via Admin > Global HTML & Scripts -->
+    
+    <!-- Global HTML Snippets: After Body Start -->
+    <div id="global-after-body-start"></div>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Global HTML Snippets: Before Body End -->
+    <div id="global-before-body-end"></div>
+    <script>
+      // Load and inject global HTML snippets from database
+      (async function() {
+        try {
+          const response = await fetch('https://swbfofxhcguegafcbmmp.supabase.co/rest/v1/global_html_snippets?limit=1', {
+            headers: {
+              'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3YmZvZnhoY2d1ZWdhZmNibW1wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc2ODQ1ODQsImV4cCI6MjA4MzI2MDU4NH0.I3EnurtLrzSE_cteVxxuXjrgo7XUT_Zu5mXD8O34hQU',
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3YmZvZnhoY2d1ZWdhZmNibW1wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc2ODQ1ODQsImV4cCI6MjA4MzI2MDU4NH0.I3EnurtLrzSE_cteVxxuXjrgo7XUT_Zu5mXD8O34hQU'
+            }
+          });
+          const data = await response.json();
+          if (data && data.length > 0) {
+            const snippets = data[0];
+            
+            // Inject before head end
+            if (snippets.before_head_end) {
+              const headScript = document.getElementById('global-before-head-end');
+              if (headScript) {
+                headScript.outerHTML = snippets.before_head_end;
+              }
+            }
+            
+            // Inject after body start
+            if (snippets.after_body_start) {
+              const bodyStart = document.getElementById('global-after-body-start');
+              if (bodyStart) {
+                bodyStart.outerHTML = snippets.after_body_start;
+              }
+            }
+            
+            // Inject before body end
+            if (snippets.before_body_end) {
+              const bodyEnd = document.getElementById('global-before-body-end');
+              if (bodyEnd) {
+                bodyEnd.outerHTML = snippets.before_body_end;
+              }
+            }
+            
+            console.log('✓ Global tracking snippets loaded from database');
+          }
+        } catch (error) {
+          console.error('Failed to load global HTML snippets:', error);
+        }
+      })();
+    </script>
   </body>
 </html>
