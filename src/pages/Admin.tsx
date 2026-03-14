@@ -1005,6 +1005,9 @@ const Admin = () => {
       }
 
       setIsAdmin(true);
+    } catch (error) {
+      console.error("[ADMIN] Failed to validate admin session:", error);
+      navigate("/login?redirect=/admin");
     } finally {
       setLoading(false);
     }
