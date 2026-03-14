@@ -21,7 +21,7 @@ import { format } from "date-fns";
 import { useExhibitorSessionTimeout } from "@/hooks/useExhibitorSessionTimeout";
 import { fetchExhibitorForUser, fetchAllExhibitorsForUser, setSelectedExhibitorId } from "@/lib/exhibitorSession";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "@/integrations/supabase/types";
+import type { Database } from "@/integrations/supabase/supabase/types";
 
 interface ExhibitorData {
   id: string;
