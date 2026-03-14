@@ -1,0 +1,1 @@
+UPDATE global_html_snippets SET before_head_end = '', after_body_start = '', before_body_end = '', updated_at = now();

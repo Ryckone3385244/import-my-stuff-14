@@ -1,0 +1,2 @@
+ALTER TABLE public.exhibitor_inquiries DROP CONSTRAINT exhibitor_inquiries_status_check;
+ALTER TABLE public.exhibitor_inquiries ADD CONSTRAINT exhibitor_inquiries_status_check CHECK (status = ANY (ARRAY['pending', 'new', 'read', 'responded', 'rejected', 'archived']));
