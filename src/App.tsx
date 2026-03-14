@@ -23,6 +23,7 @@ import { AppLoadingScreen } from "./components/AppLoadingScreen";
 // === EAGER IMPORTS: Catch-all and critical pages ===
 import NotFound from "./pages/NotFound";
 import DynamicPage from "./pages/DynamicPage";
+import Admin from "./pages/Admin";
 import { FloatingSaveButton } from "./components/editable/FloatingSaveButton";
 import { UnsavedChangesGuard } from "./components/editable/UnsavedChangesGuard";
 import { BuilderShell } from "./components/builder/BuilderShell";
@@ -44,7 +45,6 @@ const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const SetPassword = lazy(() => import("./pages/SetPassword"));
 
 // === LAZY IMPORTS: Admin pages ===
-const Admin = lazy(() => import("./pages/Admin"));
 const AdminExhibitorEdit = lazy(() => import("./pages/AdminExhibitorEdit"));
 const AdminSpeakerEdit = lazy(() => import("./pages/AdminSpeakerEdit"));
 const AdminSpeakerBulkUpload = lazy(() => import("./pages/AdminSpeakerBulkUpload"));
