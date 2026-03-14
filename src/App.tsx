@@ -151,7 +151,8 @@ const router = createBrowserRouter([
       { path: "/blogs/:slug", element: <BlogPost /> },
 
       // === ADMIN ROUTES ===
-      { path: "/admin", element: <Admin /> },
+      { path: "/admin", element: <AdminAccess /> },
+      { path: "/admin/dashboard", element: <Admin /> },
       { path: "/admin/exhibitor/:id", element: <AdminExhibitorEdit /> },
       { path: "/admin/speaker/:id", element: <AdminSpeakerEdit /> },
       { path: "/admin/speaker-bulk-upload", element: <AdminSpeakerBulkUpload /> },
