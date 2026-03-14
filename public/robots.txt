@@ -1,14 +1,69 @@
-User-agent: Googlebot
+# robots.txt
+
+# Default rules for all bots
+User-agent: *
 Allow: /
 
-User-agent: Bingbot
-Allow: /
+# Disallow admin areas
+Disallow: /admin
+Disallow: /admin/
+Disallow: /admin/*
 
+# Disallow login and authentication pages
+Disallow: /login
+Disallow: /reset-password
+
+# Disallow exhibitor portal (private area)
+Disallow: /exhibitor-portal
+Disallow: /exhibitor-portal/
+Disallow: /exhibitor-portal/*
+
+# Disallow speaker portal (private area)
+Disallow: /speaker-portal
+Disallow: /speaker-portal/
+Disallow: /speaker-portal/*
+
+# Disallow green room (private area)
+Disallow: /green-room
+
+# Disallow API paths
+Disallow: /api/
+
+# Social media crawlers - allow full access for rich previews
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: LinkedInBot
 Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+# AI/LLM crawlers
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt

@@ -1,0 +1,3 @@
+# AI/LLM Reference
+# This file is intended for AI/LLM systems to understand our website structure.
+# For crawler instructions, see /robots.txt
