@@ -2,7 +2,7 @@
  * Type definitions for Admin component
  */
 
-import { Tables } from "@/integrations/supabase/types";
+import { Tables } from "@/integrations/supabase/supabase/types";
 
 // Base table types from Supabase
 export type Exhibitor = Tables<"exhibitors">;
