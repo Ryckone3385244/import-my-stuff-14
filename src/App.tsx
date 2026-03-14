@@ -44,6 +44,7 @@ const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const SetPassword = lazy(() => import("./pages/SetPassword"));
 
 // === LAZY IMPORTS: Admin pages ===
+const AdminAccess = lazy(() => import("./pages/AdminAccess"));
 const Admin = lazy(() => import("./pages/Admin"));
 const AdminExhibitorEdit = lazy(() => import("./pages/AdminExhibitorEdit"));
 const AdminSpeakerEdit = lazy(() => import("./pages/AdminSpeakerEdit"));
@@ -150,7 +151,8 @@ const router = createBrowserRouter([
       { path: "/blogs/:slug", element: <BlogPost /> },
 
       // === ADMIN ROUTES ===
-      { path: "/admin", element: <Admin /> },
+      { path: "/admin", element: <AdminAccess /> },
+      { path: "/admin/dashboard", element: <Admin /> },
       { path: "/admin/exhibitor/:id", element: <AdminExhibitorEdit /> },
       { path: "/admin/speaker/:id", element: <AdminSpeakerEdit /> },
       { path: "/admin/speaker-bulk-upload", element: <AdminSpeakerBulkUpload /> },
