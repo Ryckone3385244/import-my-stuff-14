@@ -63,7 +63,7 @@ export const AdminAnalytics = () => {
   }, {} as Record<string, number>);
 
   const topPages = Object.entries(pageStats || {})
-    .sort(([, a], [, b]) => b - a)
+    .sort(([, a], [, b]) => (b as number) - (a as number))
     .slice(0, 10)
     .map(([page, count]) => ({
       page,

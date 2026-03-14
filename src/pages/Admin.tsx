@@ -4021,7 +4021,7 @@ const Admin = () => {
                                               
                                               const sessionCount = sessionSpeakers?.length || 0;
                                               const sessionTitles = sessionSpeakers
-                                                ?.map((ss: { agenda_sessions: { title: string } | null }) => ss.agenda_sessions?.title)
+                                                ?.map((ss: any) => ss.agenda_sessions?.title || ss.agenda_sessions?.[0]?.title)
                                                 .filter(Boolean) as string[] || [];
                                               
                                               setDeleteDialog({
