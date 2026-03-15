@@ -285,6 +285,13 @@ export type Database = {
             referencedRelation: "speakers"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "draft_sessions_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
+            referencedRelation: "speakers_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       element_motion: {
@@ -1672,6 +1679,13 @@ export type Database = {
             referencedRelation: "speakers"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "session_speakers_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
+            referencedRelation: "speakers_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       show_suppliers: {
@@ -1753,6 +1767,13 @@ export type Database = {
             columns: ["speaker_id"]
             isOneToOne: false
             referencedRelation: "speakers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "speaker_submissions_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
+            referencedRelation: "speakers_public"
             referencedColumns: ["id"]
           },
         ]
@@ -1851,6 +1872,13 @@ export type Database = {
             columns: ["supplier_id"]
             isOneToOne: false
             referencedRelation: "show_suppliers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "supplier_files_supplier_id_fkey"
+            columns: ["supplier_id"]
+            isOneToOne: false
+            referencedRelation: "suppliers_directory"
             referencedColumns: ["id"]
           },
         ]
@@ -2240,7 +2268,111 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_event_settings: {
+        Row: {
+          address_line_1: string | null
+          address_line_2: string | null
+          address_line_3: string | null
+          advert_submission_deadline: string | null
+          copyright_text: string | null
+          created_at: string | null
+          event_date: string | null
+          event_name: string | null
+          event_status: string | null
+          id: string | null
+          location: string | null
+          logo_url: string | null
+          organiser_info: string | null
+          showguide_listing_deadline: string | null
+          space_only_deadline: string | null
+          speaker_form_deadline: string | null
+          tagline: string | null
+          thumbnail_url: string | null
+          updated_at: string | null
+        }
+        Relationships: []
+      }
+      speakers_public: {
+        Row: {
+          bio: string | null
+          company: string | null
+          company_logo_url: string | null
+          created_at: string | null
+          id: string | null
+          is_active: boolean | null
+          linkedin_url: string | null
+          name: string | null
+          photo_url: string | null
+          seminar_description: string | null
+          seminar_title: string | null
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          bio?: string | null
+          company?: string | null
+          company_logo_url?: string | null
+          created_at?: string | null
+          id?: string | null
+          is_active?: boolean | null
+          linkedin_url?: string | null
+          name?: string | null
+          photo_url?: string | null
+          seminar_description?: string | null
+          seminar_title?: string | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          bio?: string | null
+          company?: string | null
+          company_logo_url?: string | null
+          created_at?: string | null
+          id?: string | null
+          is_active?: boolean | null
+          linkedin_url?: string | null
+          name?: string | null
+          photo_url?: string | null
+          seminar_description?: string | null
+          seminar_title?: string | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      suppliers_directory: {
+        Row: {
+          button_text: string | null
+          button_url: string | null
+          created_at: string | null
+          description: string | null
+          id: string | null
+          logo_url: string | null
+          name: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          logo_url?: string | null
+          name?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          logo_url?: string | null
+          name?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
