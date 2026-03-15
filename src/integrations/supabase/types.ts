@@ -2251,6 +2251,10 @@ export type Database = {
         Returns: boolean
       }
       is_admin_or_cs_or_pm: { Args: { _user_id: string }; Returns: boolean }
+      user_has_exhibitor_access: {
+        Args: { _exhibitor_id: string; _user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       app_role:
