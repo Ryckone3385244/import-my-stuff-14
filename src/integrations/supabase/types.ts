@@ -62,6 +62,30 @@ export type Database = {
         }
         Relationships: []
       }
+      blocked_inquiry_emails: {
+        Row: {
+          blocked_by: string | null
+          created_at: string
+          email: string
+          id: string
+          reason: string | null
+        }
+        Insert: {
+          blocked_by?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          reason?: string | null
+        }
+        Update: {
+          blocked_by?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          reason?: string | null
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author_id: string | null
@@ -110,6 +134,45 @@ export type Database = {
           tags?: string[] | null
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      credentials_log: {
+        Row: {
+          created_at: string
+          email: string
+          entity_id: string
+          entity_name: string
+          entity_type: string
+          generated_at: string
+          generated_by: string | null
+          generation_type: string
+          id: string
+          password_plain: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          entity_id: string
+          entity_name: string
+          entity_type: string
+          generated_at?: string
+          generated_by?: string | null
+          generation_type?: string
+          id?: string
+          password_plain: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          entity_id?: string
+          entity_name?: string
+          entity_type?: string
+          generated_at?: string
+          generated_by?: string | null
+          generation_type?: string
+          id?: string
+          password_plain?: string
         }
         Relationships: []
       }
@@ -223,6 +286,141 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      element_motion: {
+        Row: {
+          created_at: string
+          effect_config: Json
+          effect_type: string
+          element_id: string
+          id: string
+          page_name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          effect_config?: Json
+          effect_type?: string
+          element_id: string
+          id?: string
+          page_name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          effect_config?: Json
+          effect_type?: string
+          element_id?: string
+          id?: string
+          page_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      element_styles: {
+        Row: {
+          created_at: string
+          element_id: string
+          id: string
+          page_name: string
+          styles: Json
+          updated_at: string
+          viewport: string
+        }
+        Insert: {
+          created_at?: string
+          element_id: string
+          id?: string
+          page_name: string
+          styles?: Json
+          updated_at?: string
+          viewport?: string
+        }
+        Update: {
+          created_at?: string
+          element_id?: string
+          id?: string
+          page_name?: string
+          styles?: Json
+          updated_at?: string
+          viewport?: string
+        }
+        Relationships: []
+      }
+      email_deadlines: {
+        Row: {
+          created_at: string
+          deadline_date: string
+          deadline_order: number
+          description: string
+          id: string
+          is_active: boolean
+          label: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          deadline_date: string
+          deadline_order?: number
+          description: string
+          id?: string
+          is_active?: boolean
+          label: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          deadline_date?: string
+          deadline_order?: number
+          description?: string
+          id?: string
+          is_active?: boolean
+          label?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      email_templates: {
+        Row: {
+          banner_background_color: string | null
+          banner_image_url: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          page_background_color: string | null
+          portal_url: string
+          subject: string | null
+          template_type: string
+          updated_at: string
+          welcome_text: string
+        }
+        Insert: {
+          banner_background_color?: string | null
+          banner_image_url?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          page_background_color?: string | null
+          portal_url: string
+          subject?: string | null
+          template_type: string
+          updated_at?: string
+          welcome_text?: string
+        }
+        Update: {
+          banner_background_color?: string | null
+          banner_image_url?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          page_background_color?: string | null
+          portal_url?: string
+          subject?: string | null
+          template_type?: string
+          updated_at?: string
+          welcome_text?: string
+        }
+        Relationships: []
       }
       event_settings: {
         Row: {
@@ -858,6 +1056,585 @@ export type Database = {
         }
         Relationships: []
       }
+      footer_menu_items: {
+        Row: {
+          created_at: string
+          depth: number
+          id: string
+          is_active: boolean
+          is_custom: boolean
+          label: string
+          menu_order: number
+          open_in_new_tab: boolean
+          parent_id: string | null
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          depth?: number
+          id?: string
+          is_active?: boolean
+          is_custom?: boolean
+          label: string
+          menu_order?: number
+          open_in_new_tab?: boolean
+          parent_id?: string | null
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          created_at?: string
+          depth?: number
+          id?: string
+          is_active?: boolean
+          is_custom?: boolean
+          label?: string
+          menu_order?: number
+          open_in_new_tab?: boolean
+          parent_id?: string | null
+          updated_at?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "footer_menu_items_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "footer_menu_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gallery_photos: {
+        Row: {
+          created_at: string | null
+          id: string
+          photo_order: number
+          photo_url: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          photo_order?: number
+          photo_url: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          photo_order?: number
+          photo_url?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      global_html_snippets: {
+        Row: {
+          after_body_start: string | null
+          before_body_end: string | null
+          before_head_end: string | null
+          created_at: string
+          custom_css: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          after_body_start?: string | null
+          before_body_end?: string | null
+          before_head_end?: string | null
+          created_at?: string
+          custom_css?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          after_body_start?: string | null
+          before_body_end?: string | null
+          before_head_end?: string | null
+          created_at?: string
+          custom_css?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      marketing_tools: {
+        Row: {
+          created_at: string
+          file_name: string | null
+          file_url: string | null
+          id: string
+          social_platform: string | null
+          social_url: string | null
+          thumbnail_url: string | null
+          title: string | null
+          tool_type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          file_name?: string | null
+          file_url?: string | null
+          id?: string
+          social_platform?: string | null
+          social_url?: string | null
+          thumbnail_url?: string | null
+          title?: string | null
+          tool_type: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string | null
+          file_url?: string | null
+          id?: string
+          social_platform?: string | null
+          social_url?: string | null
+          thumbnail_url?: string | null
+          title?: string | null
+          tool_type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      media_library: {
+        Row: {
+          alt_text: string | null
+          created_at: string
+          description: string | null
+          file_name: string
+          file_size: number | null
+          file_type: string
+          file_url: string
+          height: number | null
+          id: string
+          mime_type: string | null
+          title: string | null
+          updated_at: string
+          uploaded_by: string | null
+          width: number | null
+        }
+        Insert: {
+          alt_text?: string | null
+          created_at?: string
+          description?: string | null
+          file_name: string
+          file_size?: number | null
+          file_type: string
+          file_url: string
+          height?: number | null
+          id?: string
+          mime_type?: string | null
+          title?: string | null
+          updated_at?: string
+          uploaded_by?: string | null
+          width?: number | null
+        }
+        Update: {
+          alt_text?: string | null
+          created_at?: string
+          description?: string | null
+          file_name?: string
+          file_size?: number | null
+          file_type?: string
+          file_url?: string
+          height?: number | null
+          id?: string
+          mime_type?: string | null
+          title?: string | null
+          updated_at?: string
+          uploaded_by?: string | null
+          width?: number | null
+        }
+        Relationships: []
+      }
+      navbar_menu_items: {
+        Row: {
+          created_at: string
+          depth: number
+          id: string
+          is_active: boolean
+          is_custom: boolean
+          label: string
+          menu_order: number
+          open_in_new_tab: boolean
+          parent_id: string | null
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          depth?: number
+          id?: string
+          is_active?: boolean
+          is_custom?: boolean
+          label: string
+          menu_order?: number
+          open_in_new_tab?: boolean
+          parent_id?: string | null
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          created_at?: string
+          depth?: number
+          id?: string
+          is_active?: boolean
+          is_custom?: boolean
+          label?: string
+          menu_order?: number
+          open_in_new_tab?: boolean
+          parent_id?: string | null
+          updated_at?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "navbar_menu_items_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "navbar_menu_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      page_content: {
+        Row: {
+          content_key: string
+          content_type: string
+          content_value: string
+          created_at: string | null
+          id: string
+          page_name: string
+          section_name: string
+          updated_at: string | null
+        }
+        Insert: {
+          content_key: string
+          content_type?: string
+          content_value: string
+          created_at?: string | null
+          id?: string
+          page_name: string
+          section_name: string
+          updated_at?: string | null
+        }
+        Update: {
+          content_key?: string
+          content_type?: string
+          content_value?: string
+          created_at?: string | null
+          id?: string
+          page_name?: string
+          section_name?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      page_section_order: {
+        Row: {
+          background_type: string | null
+          background_value: string | null
+          created_at: string
+          id: string
+          no_mobile_swap: boolean | null
+          page_name: string
+          section_id: string
+          section_order: number
+          status: string
+          updated_at: string
+          visible: boolean
+        }
+        Insert: {
+          background_type?: string | null
+          background_value?: string | null
+          created_at?: string
+          id?: string
+          no_mobile_swap?: boolean | null
+          page_name: string
+          section_id: string
+          section_order: number
+          status?: string
+          updated_at?: string
+          visible?: boolean
+        }
+        Update: {
+          background_type?: string | null
+          background_value?: string | null
+          created_at?: string
+          id?: string
+          no_mobile_swap?: boolean | null
+          page_name?: string
+          section_id?: string
+          section_order?: number
+          status?: string
+          updated_at?: string
+          visible?: boolean
+        }
+        Relationships: []
+      }
+      page_versions: {
+        Row: {
+          column_order_snapshot: Json | null
+          content_snapshot: Json
+          created_at: string | null
+          created_by: string | null
+          id: string
+          page_name: string
+          section_order_snapshot: Json | null
+          version_number: number | null
+        }
+        Insert: {
+          column_order_snapshot?: Json | null
+          content_snapshot?: Json
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          page_name: string
+          section_order_snapshot?: Json | null
+          version_number?: number | null
+        }
+        Update: {
+          column_order_snapshot?: Json | null
+          content_snapshot?: Json
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          page_name?: string
+          section_order_snapshot?: Json | null
+          version_number?: number | null
+        }
+        Relationships: []
+      }
+      page_views: {
+        Row: {
+          created_at: string
+          id: string
+          page_path: string
+          page_title: string | null
+          session_id: string
+          time_on_page: number | null
+          viewed_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          page_path: string
+          page_title?: string | null
+          session_id: string
+          time_on_page?: number | null
+          viewed_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          page_path?: string
+          page_title?: string | null
+          session_id?: string
+          time_on_page?: number | null
+          viewed_at?: string
+        }
+        Relationships: []
+      }
+      password_setup_tokens: {
+        Row: {
+          created_at: string | null
+          entity_id: string
+          expires_at: string
+          id: string
+          token: string
+          used_at: string | null
+          user_id: string
+          user_type: string
+        }
+        Insert: {
+          created_at?: string | null
+          entity_id: string
+          expires_at: string
+          id?: string
+          token: string
+          used_at?: string | null
+          user_id: string
+          user_type: string
+        }
+        Update: {
+          created_at?: string | null
+          entity_id?: string
+          expires_at?: string
+          id?: string
+          token?: string
+          used_at?: string | null
+          user_id?: string
+          user_type?: string
+        }
+        Relationships: []
+      }
+      portal_menu_items: {
+        Row: {
+          created_at: string
+          depth: number
+          id: string
+          is_active: boolean
+          is_custom: boolean
+          label: string
+          menu_order: number
+          open_in_new_tab: boolean
+          parent_id: string | null
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          depth?: number
+          id?: string
+          is_active?: boolean
+          is_custom?: boolean
+          label: string
+          menu_order?: number
+          open_in_new_tab?: boolean
+          parent_id?: string | null
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          created_at?: string
+          depth?: number
+          id?: string
+          is_active?: boolean
+          is_custom?: boolean
+          label?: string
+          menu_order?: number
+          open_in_new_tab?: boolean
+          parent_id?: string | null
+          updated_at?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "portal_menu_items_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "portal_menu_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      registrations: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          has_accessed_floorplan: boolean | null
+          id: string
+          interest_type: string | null
+          name: string
+          phone: string | null
+          role: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          email: string
+          has_accessed_floorplan?: boolean | null
+          id?: string
+          interest_type?: string | null
+          name: string
+          phone?: string | null
+          role: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          has_accessed_floorplan?: boolean | null
+          id?: string
+          interest_type?: string | null
+          name?: string
+          phone?: string | null
+          role?: string
+        }
+        Relationships: []
+      }
+      section_column_order: {
+        Row: {
+          card_color: string | null
+          column_id: string
+          column_order: number
+          column_width: string | null
+          created_at: string
+          id: string
+          page_name: string
+          section_id: string
+          show_border: boolean | null
+          updated_at: string
+          vertical_align: string | null
+          visible: boolean
+        }
+        Insert: {
+          card_color?: string | null
+          column_id: string
+          column_order: number
+          column_width?: string | null
+          created_at?: string
+          id?: string
+          page_name: string
+          section_id: string
+          show_border?: boolean | null
+          updated_at?: string
+          vertical_align?: string | null
+          visible?: boolean
+        }
+        Update: {
+          card_color?: string | null
+          column_id?: string
+          column_order?: number
+          column_width?: string | null
+          created_at?: string
+          id?: string
+          page_name?: string
+          section_id?: string
+          show_border?: boolean | null
+          updated_at?: string
+          vertical_align?: string | null
+          visible?: boolean
+        }
+        Relationships: []
+      }
+      seo_redirects: {
+        Row: {
+          created_at: string
+          from_path: string
+          id: string
+          is_active: boolean | null
+          is_pattern: boolean
+          redirect_type: string
+          to_path: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          from_path: string
+          id?: string
+          is_active?: boolean | null
+          is_pattern?: boolean
+          redirect_type?: string
+          to_path: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          from_path?: string
+          id?: string
+          is_active?: boolean | null
+          is_pattern?: boolean
+          redirect_type?: string
+          to_path?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       session_speakers: {
         Row: {
           created_at: string
@@ -896,6 +1673,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      show_suppliers: {
+        Row: {
+          button_text: string | null
+          button_url: string | null
+          created_at: string
+          description: string | null
+          id: string
+          logo_url: string | null
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          logo_url?: string | null
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          logo_url?: string | null
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       speaker_submissions: {
         Row: {
@@ -1007,6 +1817,88 @@ export type Database = {
         }
         Relationships: []
       }
+      supplier_files: {
+        Row: {
+          created_at: string | null
+          file_name: string
+          file_size: number | null
+          file_url: string
+          id: string
+          supplier_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          file_name: string
+          file_size?: number | null
+          file_url: string
+          id?: string
+          supplier_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          file_name?: string
+          file_size?: number | null
+          file_url?: string
+          id?: string
+          supplier_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "supplier_files_supplier_id_fkey"
+            columns: ["supplier_id"]
+            isOneToOne: false
+            referencedRelation: "show_suppliers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      support_tickets: {
+        Row: {
+          attachment_urls: string[] | null
+          created_at: string
+          exhibitor_id: string
+          id: string
+          message: string
+          status: string
+          subject: string
+          ticket_number: string
+          updated_at: string
+        }
+        Insert: {
+          attachment_urls?: string[] | null
+          created_at?: string
+          exhibitor_id: string
+          id?: string
+          message: string
+          status?: string
+          subject: string
+          ticket_number: string
+          updated_at?: string
+        }
+        Update: {
+          attachment_urls?: string[] | null
+          created_at?: string
+          exhibitor_id?: string
+          id?: string
+          message?: string
+          status?: string
+          subject?: string
+          ticket_number?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "support_tickets_exhibitor_id_fkey"
+            columns: ["exhibitor_id"]
+            isOneToOne: false
+            referencedRelation: "exhibitors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_profiles: {
         Row: {
           created_at: string | null
@@ -1055,6 +1947,294 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      visitor_sessions: {
+        Row: {
+          browser: string | null
+          city: string | null
+          country: string | null
+          created_at: string
+          device_type: string | null
+          first_seen: string
+          id: string
+          last_seen: string
+          os: string | null
+          referrer: string | null
+          session_id: string
+          user_agent: string | null
+        }
+        Insert: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          device_type?: string | null
+          first_seen?: string
+          id?: string
+          last_seen?: string
+          os?: string | null
+          referrer?: string | null
+          session_id: string
+          user_agent?: string | null
+        }
+        Update: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          device_type?: string | null
+          first_seen?: string
+          id?: string
+          last_seen?: string
+          os?: string | null
+          referrer?: string | null
+          session_id?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
+      website_pages: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          page_name: string
+          page_url: string
+          renderer: string | null
+          seo_description: string | null
+          seo_keywords: string | null
+          seo_title: string | null
+          status: Database["public"]["Enums"]["page_status"]
+          tags: string[] | null
+          thumbnail_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          page_name: string
+          page_url: string
+          renderer?: string | null
+          seo_description?: string | null
+          seo_keywords?: string | null
+          seo_title?: string | null
+          status?: Database["public"]["Enums"]["page_status"]
+          tags?: string[] | null
+          thumbnail_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          page_name?: string
+          page_url?: string
+          renderer?: string | null
+          seo_description?: string | null
+          seo_keywords?: string | null
+          seo_title?: string | null
+          status?: Database["public"]["Enums"]["page_status"]
+          tags?: string[] | null
+          thumbnail_url?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      website_styles: {
+        Row: {
+          accent_color: string | null
+          adobe_fonts_url: string | null
+          background_color: string | null
+          black_card_background_color: string | null
+          black_card_text_color: string | null
+          black_card_title_color: string | null
+          border_radius: string | null
+          button_2_border: string | null
+          button_2_border_radius: string | null
+          button_2_color: string | null
+          button_2_font_size: string | null
+          button_2_font_style: string | null
+          button_2_font_weight: string | null
+          button_2_padding: string | null
+          button_2_text_color: string | null
+          button_2_text_transform: string | null
+          button_border: string | null
+          button_border_radius: string | null
+          button_color: string | null
+          button_font_size: string | null
+          button_font_style: string | null
+          button_font_weight: string | null
+          button_padding: string | null
+          button_text_color: string | null
+          button_text_transform: string | null
+          card_background_color: string | null
+          card_padding: string | null
+          card_text_color: string | null
+          card_title_color: string | null
+          created_at: string
+          font_family_body: string | null
+          font_family_heading: string | null
+          foreground_color: string | null
+          google_fonts_url: string | null
+          gradient_angle: string | null
+          gradient_end_color: string | null
+          gradient_start_color: string | null
+          gray_card_background_color: string | null
+          gray_card_text_color: string | null
+          gray_card_title_color: string | null
+          green_card_background_color: string | null
+          green_card_text_color: string | null
+          green_card_title_color: string | null
+          h1_size: string | null
+          h2_size: string | null
+          h3_size: string | null
+          h4_size: string | null
+          h5_size: string | null
+          h6_size: string | null
+          heading_text_transform: string | null
+          hero_title_size: string | null
+          hero_title_size_mobile: string | null
+          id: string
+          image_border_radius: string | null
+          image_padding: string | null
+          muted_color: string | null
+          navbar_menu_size: string | null
+          primary_color: string | null
+          secondary_color: string | null
+          transparent_card_text_color: string | null
+          transparent_card_title_color: string | null
+          updated_at: string
+        }
+        Insert: {
+          accent_color?: string | null
+          adobe_fonts_url?: string | null
+          background_color?: string | null
+          black_card_background_color?: string | null
+          black_card_text_color?: string | null
+          black_card_title_color?: string | null
+          border_radius?: string | null
+          button_2_border?: string | null
+          button_2_border_radius?: string | null
+          button_2_color?: string | null
+          button_2_font_size?: string | null
+          button_2_font_style?: string | null
+          button_2_font_weight?: string | null
+          button_2_padding?: string | null
+          button_2_text_color?: string | null
+          button_2_text_transform?: string | null
+          button_border?: string | null
+          button_border_radius?: string | null
+          button_color?: string | null
+          button_font_size?: string | null
+          button_font_style?: string | null
+          button_font_weight?: string | null
+          button_padding?: string | null
+          button_text_color?: string | null
+          button_text_transform?: string | null
+          card_background_color?: string | null
+          card_padding?: string | null
+          card_text_color?: string | null
+          card_title_color?: string | null
+          created_at?: string
+          font_family_body?: string | null
+          font_family_heading?: string | null
+          foreground_color?: string | null
+          google_fonts_url?: string | null
+          gradient_angle?: string | null
+          gradient_end_color?: string | null
+          gradient_start_color?: string | null
+          gray_card_background_color?: string | null
+          gray_card_text_color?: string | null
+          gray_card_title_color?: string | null
+          green_card_background_color?: string | null
+          green_card_text_color?: string | null
+          green_card_title_color?: string | null
+          h1_size?: string | null
+          h2_size?: string | null
+          h3_size?: string | null
+          h4_size?: string | null
+          h5_size?: string | null
+          h6_size?: string | null
+          heading_text_transform?: string | null
+          hero_title_size?: string | null
+          hero_title_size_mobile?: string | null
+          id?: string
+          image_border_radius?: string | null
+          image_padding?: string | null
+          muted_color?: string | null
+          navbar_menu_size?: string | null
+          primary_color?: string | null
+          secondary_color?: string | null
+          transparent_card_text_color?: string | null
+          transparent_card_title_color?: string | null
+          updated_at?: string
+        }
+        Update: {
+          accent_color?: string | null
+          adobe_fonts_url?: string | null
+          background_color?: string | null
+          black_card_background_color?: string | null
+          black_card_text_color?: string | null
+          black_card_title_color?: string | null
+          border_radius?: string | null
+          button_2_border?: string | null
+          button_2_border_radius?: string | null
+          button_2_color?: string | null
+          button_2_font_size?: string | null
+          button_2_font_style?: string | null
+          button_2_font_weight?: string | null
+          button_2_padding?: string | null
+          button_2_text_color?: string | null
+          button_2_text_transform?: string | null
+          button_border?: string | null
+          button_border_radius?: string | null
+          button_color?: string | null
+          button_font_size?: string | null
+          button_font_style?: string | null
+          button_font_weight?: string | null
+          button_padding?: string | null
+          button_text_color?: string | null
+          button_text_transform?: string | null
+          card_background_color?: string | null
+          card_padding?: string | null
+          card_text_color?: string | null
+          card_title_color?: string | null
+          created_at?: string
+          font_family_body?: string | null
+          font_family_heading?: string | null
+          foreground_color?: string | null
+          google_fonts_url?: string | null
+          gradient_angle?: string | null
+          gradient_end_color?: string | null
+          gradient_start_color?: string | null
+          gray_card_background_color?: string | null
+          gray_card_text_color?: string | null
+          gray_card_title_color?: string | null
+          green_card_background_color?: string | null
+          green_card_text_color?: string | null
+          green_card_title_color?: string | null
+          h1_size?: string | null
+          h2_size?: string | null
+          h3_size?: string | null
+          h4_size?: string | null
+          h5_size?: string | null
+          h6_size?: string | null
+          heading_text_transform?: string | null
+          hero_title_size?: string | null
+          hero_title_size_mobile?: string | null
+          id?: string
+          image_border_radius?: string | null
+          image_padding?: string | null
+          muted_color?: string | null
+          navbar_menu_size?: string | null
+          primary_color?: string | null
+          secondary_color?: string | null
+          transparent_card_text_color?: string | null
+          transparent_card_title_color?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
