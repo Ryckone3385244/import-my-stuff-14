@@ -115,6 +115,21 @@ body[data-admin-page="true"] [data-state="inactive"][role="tab"] {
   color: #6b7280 !important;
 }
 
+/* Tabs list container (often dark bg) */
+body[data-admin-page="true"] [role="tablist"] {
+  background-color: #f4f5f7 !important;
+  color: #6b7280 !important;
+}
+
+/* ── Generic: any dark-bg element should have white text ─────────── */
+body[data-admin-page="true"] .bg-black,
+body[data-admin-page="true"] .bg-secondary,
+body[data-admin-page="true"] [class*="bg-[hsl(var(--secondary"]],
+body[data-admin-page="true"] .bg-muted {
+  background-color: #f4f5f7 !important;
+  color: #1f2937 !important;
+}
+
 /* ── 7. Badges ───────────────────────────────────────────────────── */
 body[data-admin-page="true"] [data-slot="badge"] {
   border-color: #e5e7eb !important;
