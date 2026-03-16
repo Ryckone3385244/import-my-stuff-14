@@ -1,0 +1,143 @@
+/**
+ * Admin UI overrides — hardcoded, independent of the site design system.
+ * Activated via body[data-admin-page="true"] set by useAdminPageDetection.
+ *
+ * Palette:
+ *   Accent blue  #4d9fff  (matches builder/edit-mode blue)
+ *   Background   #ffffff / #f4f5f7
+ *   Text         #1f2937 (dark grey) / #6b7280 (muted)
+ *   Fields       #ffffff
+ *   Borders      #e5e7eb
+ */
+
+/* ── 1. Override CSS design-system variables for admin pages ────────── */
+body[data-admin-page="true"] {
+  /* Force light-mode palette */
+  --background: 0 0% 100%;
+  --foreground: 220 13% 18%;          /* #1f2937 */
+
+  --card: 0 0% 100%;
+  --card-foreground: 220 13% 18%;
+  --card-title: 220 13% 18%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 13% 18%;
+
+  --primary: 213 100% 65%;            /* #4d9fff */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 220 14% 96%;           /* #f4f5f7 */
+  --secondary-foreground: 220 13% 18%;
+
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 46%;     /* #6b7280 */
+
+  --accent: 213 100% 65%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 220 13% 91%;              /* #e5e7eb */
+  --input: 220 13% 91%;
+  --ring: 213 100% 65%;
+
+  /* Buttons */
+  --button-color: 213 100% 65%;
+  --button-foreground: 0 0% 100%;
+  --button-2-color: 213 100% 65%;
+  --button-2-foreground: 0 0% 100%;
+
+  /* Shadows — subtle for light mode */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+
+  /* Force system font stack — independent of design system Google Fonts */
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Neutralise heading transforms that may come from the site theme */
+  --heading-text-transform: none;
+  --font-weight-heading: 600;
+  --letter-spacing-heading: -0.01em;
+
+  color-scheme: light;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* ── 2. Force fonts on all admin descendants ─────────────────────── */
+body[data-admin-page="true"] * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* ── 3. Input / textarea / select fields: always white ───────────── */
+body[data-admin-page="true"] input,
+body[data-admin-page="true"] textarea,
+body[data-admin-page="true"] select,
+body[data-admin-page="true"] [role="combobox"],
+body[data-admin-page="true"] [data-radix-select-trigger],
+body[data-admin-page="true"] [cmdk-input] {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* ── 4. Cards / panels: white background ─────────────────────────── */
+body[data-admin-page="true"] .rounded-lg.border,
+body[data-admin-page="true"] [data-slot="card"] {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+/* ── 5. Table rows ───────────────────────────────────────────────── */
+body[data-admin-page="true"] table {
+  background-color: #ffffff !important;
+}
+
+body[data-admin-page="true"] th {
+  background-color: #f9fafb !important;
+  color: #6b7280 !important;
+}
+
+body[data-admin-page="true"] tr:hover td {
+  background-color: #f9fafb !important;
+}
+
+/* ── 6. Tabs trigger: blue when active ───────────────────────────── */
+body[data-admin-page="true"] [data-state="active"][role="tab"] {
+  background-color: #4d9fff !important;
+  color: #ffffff !important;
+}
+
+body[data-admin-page="true"] [data-state="inactive"][role="tab"] {
+  background-color: transparent !important;
+  color: #6b7280 !important;
+}
+
+/* ── 7. Badges ───────────────────────────────────────────────────── */
+body[data-admin-page="true"] [data-slot="badge"] {
+  border-color: #e5e7eb !important;
+}
+
+/* ── 8. Dialogs / sheets: white background ───────────────────────── */
+body[data-admin-page="true"] [role="dialog"],
+body[data-admin-page="true"] [data-radix-popper-content-wrapper] * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* ── 9. Switch: blue when checked ─────────────────────────────── */
+body[data-admin-page="true"] [role="switch"][data-state="checked"] {
+  background-color: #4d9fff !important;
+}
+
+/* ── 10. Progress bar ───────────────────────────────────────────── */
+body[data-admin-page="true"] [role="progressbar"] > div {
+  background-color: #4d9fff !important;
+}
+
+/* ── 11. Page-level background ──────────────────────────────────── */
+body[data-admin-page="true"] .min-h-screen,
+body[data-admin-page="true"] main {
+  background-color: #f4f5f7 !important;
+}
