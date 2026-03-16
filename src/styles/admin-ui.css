@@ -115,19 +115,16 @@ body[data-admin-page="true"] [data-state="inactive"][role="tab"] {
   color: #6b7280 !important;
 }
 
-/* Tabs list container (often dark bg) */
+/* Tabs list container — keep dark, white text */
 body[data-admin-page="true"] [role="tablist"] {
-  background-color: #f4f5f7 !important;
-  color: #6b7280 !important;
+  color: #ffffff !important;
 }
 
-/* ── Generic: any dark-bg element should have white text ─────────── */
+/* ── Generic: dark backgrounds get white text ────────────────────── */
 body[data-admin-page="true"] .bg-black,
 body[data-admin-page="true"] .bg-secondary,
-body[data-admin-page="true"] [class*="bg-[hsl(var(--secondary"]],
-body[data-admin-page="true"] .bg-muted {
-  background-color: #f4f5f7 !important;
-  color: #1f2937 !important;
+body[data-admin-page="true"] [class*="bg-[hsl(var(--secondary"] {
+  color: #ffffff !important;
 }
 
 /* ── 7. Badges ───────────────────────────────────────────────────── */
