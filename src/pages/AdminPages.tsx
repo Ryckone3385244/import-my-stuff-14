@@ -1062,6 +1062,36 @@ const AdminPages = () => {
               />
               <Label htmlFor="is_active" className="text-black">Page is active</Label>
             </div>
+
+            <div className="border-t pt-4 mt-4">
+              <p className="text-sm font-semibold mb-3">Layout Overrides (optional)</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label className="text-black">Navbar Layout</Label>
+                  <Select value={formData.navbar_partial_id} onValueChange={v => setFormData(f => ({ ...f, navbar_partial_id: v }))}>
+                    <SelectTrigger className="bg-white text-gray-700"><SelectValue placeholder="Use default" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="">Use default</SelectItem>
+                      {layoutPartials.filter(p => p.partial_type === 'navbar').map(p => (
+                        <SelectItem key={p.id} value={p.id}>{p.name}{p.is_default ? ' (Default)' : ''}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-black">Footer Layout</Label>
+                  <Select value={formData.footer_partial_id} onValueChange={v => setFormData(f => ({ ...f, footer_partial_id: v }))}>
+                    <SelectTrigger className="bg-white text-gray-700"><SelectValue placeholder="Use default" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="">Use default</SelectItem>
+                      {layoutPartials.filter(p => p.partial_type === 'footer').map(p => (
+                        <SelectItem key={p.id} value={p.id}>{p.name}{p.is_default ? ' (Default)' : ''}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
           </div>
 
           <DialogFooter>
