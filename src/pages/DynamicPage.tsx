@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useEventSettingsContext } from "@/contexts/EventSettingsContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { PartialRenderer } from "@/components/layout/PartialRenderer";
 import { ExhibitorSidebar } from "@/components/ExhibitorSidebar";
 import { PageWithDraggableSections } from "@/components/editable";
 import { supabase } from "@/integrations/supabase/client";
