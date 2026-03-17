@@ -168,6 +168,7 @@ const router = createBrowserRouter([
       { path: "/admin/google-drive", element: <AdminGoogleDriveSettings /> },
       { path: "/admin/sitemap-generator", element: <AdminSitemapGenerator /> },
       { path: "/admin/other-configs", element: <AdminOtherConfigs /> },
+      { path: "/admin/layouts", element: <AdminLayoutPartials /> },
 
       // === AUTH ROUTES ===
       { path: "/login", element: <Login /> },
