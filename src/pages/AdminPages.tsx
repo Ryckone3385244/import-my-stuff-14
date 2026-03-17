@@ -188,6 +188,8 @@ const AdminPages = () => {
       tags: "",
       is_active: true,
       status: "published",
+      navbar_partial_id: "",
+      footer_partial_id: "",
     });
     setShowDialog(true);
   };
