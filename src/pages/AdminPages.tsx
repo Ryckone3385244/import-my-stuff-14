@@ -170,6 +170,8 @@ const AdminPages = () => {
       tags: page.tags?.join(", ") || "",
       is_active: page.is_active,
       status: page.status || "published",
+      navbar_partial_id: page.navbar_partial_id || "",
+      footer_partial_id: page.footer_partial_id || "",
     });
     setShowDialog(true);
   };
