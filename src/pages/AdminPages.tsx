@@ -240,6 +240,8 @@ const AdminPages = () => {
         tags: tagsArray.length > 0 ? tagsArray : null,
         is_active: formData.is_active,
         status: formData.status,
+        navbar_partial_id: formData.navbar_partial_id || null,
+        footer_partial_id: formData.footer_partial_id || null,
       };
 
       if (editingPage) {
