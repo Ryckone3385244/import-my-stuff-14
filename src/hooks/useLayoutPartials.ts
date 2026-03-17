@@ -54,13 +54,14 @@ export const useResolvedPartial = (pageUrl: string | null, type: 'navbar' | 'foo
     queryFn: async () => {
       // Check page-level override
       if (pageUrl) {
+        const col = type === 'navbar' ? 'navbar_partial_id' : 'footer_partial_id';
         const { data: page } = await supabase
           .from('website_pages')
-          .select(type === 'navbar' ? 'navbar_partial_id' : 'footer_partial_id')
+          .select(col)
           .eq('page_url', pageUrl)
           .maybeSingle();
 
-        const overrideId = type === 'navbar' ? page?.navbar_partial_id : page?.footer_partial_id;
+        const overrideId = (page as Record<string, any> | null)?.[col] as string | null;
         if (overrideId) {
           const { data: partial } = await supabase
             .from('layout_partials')
