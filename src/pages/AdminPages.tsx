@@ -49,6 +49,8 @@ interface WebsitePage {
   tags: string[] | null;
   is_active: boolean;
   status: 'published' | 'draft';
+  navbar_partial_id: string | null;
+  footer_partial_id: string | null;
   created_at: string;
   updated_at: string;
 }
