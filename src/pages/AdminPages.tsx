@@ -77,6 +77,23 @@ const AdminPages = () => {
     tags: "",
     is_active: true,
     status: "published" as 'published' | 'draft',
+    navbar_partial_id: "" as string,
+    footer_partial_id: "" as string,
+  });
+
+  // Fetch layout partials for the override dropdowns
+  const { data: layoutPartials = [] } = useQuery({
+    queryKey: ['layout-partials-for-pages'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('layout_partials')
+        .select('id, name, partial_type, is_default')
+        .order('partial_type')
+        .order('is_default', { ascending: false })
+        .order('name');
+      if (error) throw error;
+      return data || [];
+    },
   });
 
   useEffect(() => {
