@@ -60,6 +60,7 @@ const AdminEventSettings = lazy(() => import("./pages/AdminEventSettings"));
 const AdminGoogleDriveSettings = lazy(() => import("./pages/AdminGoogleDriveSettings"));
 const AdminSitemapGenerator = lazy(() => import("./pages/AdminSitemapGenerator"));
 const AdminOtherConfigs = lazy(() => import("./pages/AdminOtherConfigs"));
+const AdminLayoutPartials = lazy(() => import("./pages/AdminLayoutPartials"));
 
 // === LAZY IMPORTS: Exhibitor Portal pages ===
 const ExhibitorLogin = lazy(() => import("./pages/ExhibitorLogin"));
@@ -167,6 +168,7 @@ const router = createBrowserRouter([
       { path: "/admin/google-drive", element: <AdminGoogleDriveSettings /> },
       { path: "/admin/sitemap-generator", element: <AdminSitemapGenerator /> },
       { path: "/admin/other-configs", element: <AdminOtherConfigs /> },
+      { path: "/admin/layouts", element: <AdminLayoutPartials /> },
 
       // === AUTH ROUTES ===
       { path: "/login", element: <Login /> },

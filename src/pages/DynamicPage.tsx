@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useEventSettingsContext } from "@/contexts/EventSettingsContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { PartialRenderer } from "@/components/layout/PartialRenderer";
 import { ExhibitorSidebar } from "@/components/ExhibitorSidebar";
 import { PageWithDraggableSections } from "@/components/editable";
 import { supabase } from "@/integrations/supabase/client";
@@ -122,7 +123,7 @@ const GenericDynamicPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col bg-background">
-        <Navbar />
+        <PartialRenderer type="navbar" pageUrl={location.pathname} />
         <main className="flex-1 pt-page">
           <div className="container mx-auto px-4">
             <div className="text-center py-12">
@@ -130,7 +131,7 @@ const GenericDynamicPage = () => {
             </div>
           </div>
         </main>
-        <Footer />
+        <PartialRenderer type="footer" pageUrl={location.pathname} />
       </div>
     );
   }
@@ -161,7 +162,7 @@ const GenericDynamicPage = () => {
       </Helmet>
 
       <div className="min-h-screen flex flex-col bg-background">
-        <Navbar />
+        <PartialRenderer type="navbar" pageUrl={location.pathname} />
         <main className="flex-1 pt-page">
           <div className="container mx-auto px-4">
             {isPortalPage ? (
@@ -194,7 +195,7 @@ const GenericDynamicPage = () => {
             )}
           </div>
         </main>
-        <Footer />
+        <PartialRenderer type="footer" pageUrl={location.pathname} />
       </div>
     </>
   );

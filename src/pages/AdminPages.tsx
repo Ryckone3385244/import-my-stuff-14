@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { DynamicHelmet } from "@/components/DynamicHelmet";
@@ -49,6 +50,8 @@ interface WebsitePage {
   tags: string[] | null;
   is_active: boolean;
   status: 'published' | 'draft';
+  navbar_partial_id: string | null;
+  footer_partial_id: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -75,6 +78,23 @@ const AdminPages = () => {
     tags: "",
     is_active: true,
     status: "published" as 'published' | 'draft',
+    navbar_partial_id: "" as string,
+    footer_partial_id: "" as string,
+  });
+
+  // Fetch layout partials for the override dropdowns
+  const { data: layoutPartials = [] } = useQuery({
+    queryKey: ['layout-partials-for-pages'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('layout_partials')
+        .select('id, name, partial_type, is_default')
+        .order('partial_type')
+        .order('is_default', { ascending: false })
+        .order('name');
+      if (error) throw error;
+      return data || [];
+    },
   });
 
   useEffect(() => {
@@ -150,6 +170,8 @@ const AdminPages = () => {
       tags: page.tags?.join(", ") || "",
       is_active: page.is_active,
       status: page.status || "published",
+      navbar_partial_id: page.navbar_partial_id || "",
+      footer_partial_id: page.footer_partial_id || "",
     });
     setShowDialog(true);
   };
@@ -166,6 +188,8 @@ const AdminPages = () => {
       tags: "",
       is_active: true,
       status: "published",
+      navbar_partial_id: "",
+      footer_partial_id: "",
     });
     setShowDialog(true);
   };
@@ -216,6 +240,8 @@ const AdminPages = () => {
         tags: tagsArray.length > 0 ? tagsArray : null,
         is_active: formData.is_active,
         status: formData.status,
+        navbar_partial_id: formData.navbar_partial_id || null,
+        footer_partial_id: formData.footer_partial_id || null,
       };
 
       if (editingPage) {
@@ -1035,6 +1061,36 @@ const AdminPages = () => {
                 onCheckedChange={(checked) => setFormData(prev => ({ ...prev, is_active: checked }))}
               />
               <Label htmlFor="is_active" className="text-black">Page is active</Label>
+            </div>
+
+            <div className="border-t pt-4 mt-4">
+              <p className="text-sm font-semibold mb-3">Layout Overrides (optional)</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label className="text-black">Navbar Layout</Label>
+                  <Select value={formData.navbar_partial_id} onValueChange={v => setFormData(f => ({ ...f, navbar_partial_id: v }))}>
+                    <SelectTrigger className="bg-white text-gray-700"><SelectValue placeholder="Use default" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="">Use default</SelectItem>
+                      {layoutPartials.filter(p => p.partial_type === 'navbar').map(p => (
+                        <SelectItem key={p.id} value={p.id}>{p.name}{p.is_default ? ' (Default)' : ''}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-black">Footer Layout</Label>
+                  <Select value={formData.footer_partial_id} onValueChange={v => setFormData(f => ({ ...f, footer_partial_id: v }))}>
+                    <SelectTrigger className="bg-white text-gray-700"><SelectValue placeholder="Use default" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="">Use default</SelectItem>
+                      {layoutPartials.filter(p => p.partial_type === 'footer').map(p => (
+                        <SelectItem key={p.id} value={p.id}>{p.name}{p.is_default ? ' (Default)' : ''}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </div>
           </div>
 
