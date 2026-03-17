@@ -162,7 +162,7 @@ const GenericDynamicPage = () => {
       </Helmet>
 
       <div className="min-h-screen flex flex-col bg-background">
-        <Navbar />
+        <PartialRenderer type="navbar" pageUrl={location.pathname} />
         <main className="flex-1 pt-page">
           <div className="container mx-auto px-4">
             {isPortalPage ? (
@@ -195,7 +195,7 @@ const GenericDynamicPage = () => {
             )}
           </div>
         </main>
-        <Footer />
+        <PartialRenderer type="footer" pageUrl={location.pathname} />
       </div>
     </>
   );
