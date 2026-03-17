@@ -1167,6 +1167,42 @@ export type Database = {
         }
         Relationships: []
       }
+      layout_partials: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_default: boolean
+          is_template: boolean
+          name: string
+          partial_type: string
+          template_key: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_default?: boolean
+          is_template?: boolean
+          name: string
+          partial_type: string
+          template_key?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_default?: boolean
+          is_template?: boolean
+          name?: string
+          partial_type?: string
+          template_key?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       marketing_tools: {
         Row: {
           created_at: string
@@ -2026,8 +2062,10 @@ export type Database = {
       website_pages: {
         Row: {
           created_at: string
+          footer_partial_id: string | null
           id: string
           is_active: boolean
+          navbar_partial_id: string | null
           page_name: string
           page_url: string
           renderer: string | null
@@ -2041,8 +2079,10 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          footer_partial_id?: string | null
           id?: string
           is_active?: boolean
+          navbar_partial_id?: string | null
           page_name: string
           page_url: string
           renderer?: string | null
@@ -2056,8 +2096,10 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          footer_partial_id?: string | null
           id?: string
           is_active?: boolean
+          navbar_partial_id?: string | null
           page_name?: string
           page_url?: string
           renderer?: string | null
@@ -2069,7 +2111,22 @@ export type Database = {
           thumbnail_url?: string | null
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "website_pages_footer_partial_id_fkey"
+            columns: ["footer_partial_id"]
+            isOneToOne: false
+            referencedRelation: "layout_partials"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "website_pages_navbar_partial_id_fkey"
+            columns: ["navbar_partial_id"]
+            isOneToOne: false
+            referencedRelation: "layout_partials"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       website_styles: {
         Row: {
